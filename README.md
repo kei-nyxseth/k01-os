@@ -9,5 +9,5 @@ automatically on first boot.
 ## Rebase
 
 ```
-sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/kei-nyxseth/k01-os:stable
+sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/kei-nyxseth/k01-os:latest
 ```
