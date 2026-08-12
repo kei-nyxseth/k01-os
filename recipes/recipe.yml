@@ -20,6 +20,7 @@ modules:
         - quickshell
         - qt5ct
         - qt6ct
+        - zsh
 
   - type: files
     files:
