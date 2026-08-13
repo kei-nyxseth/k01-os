@@ -21,6 +21,12 @@ modules:
         - qt5ct
         - qt6ct
         - zsh
+        # Runtime libs for Noctalia shell (compiled by the user outside the
+        # image, kept in $HOME; these three are the only deps not already
+        # covered by the base Bazzite/GNOME/niri stack).
+        - libnghttp3
+        - libqalculate
+        - tomlplusplus
 
   - type: files
     files:
