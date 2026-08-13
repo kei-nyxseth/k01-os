@@ -12,7 +12,6 @@ modules:
       copr:
         - avengemedia/danklinux
         - avengemedia/dms
-        - agonie/swww
     install:
       packages:
         - niri
@@ -28,9 +27,8 @@ modules:
         - libnghttp3
         - libqalculate
         - tomlplusplus
-        # Wallpaper daemon backing the HyprQuickPaper-style picker (compositor
-        # agnostic, works fine under niri despite the "Hypr" name).
-        - swww
+        # Wallpaper setter backing the HyprQuickPaper-style picker.
+        - swaybg
 
   - type: files
     files:
