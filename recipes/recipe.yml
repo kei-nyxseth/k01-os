@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 version: 1
 name: k01-os
-description: Bazzite (GNOME, nvidia) + niri/DankMaterialShell baked in, with Kali and Arch/AUR distrobox containers provisioned on first boot.
+description: Bazzite (GNOME, nvidia) + niri/Noctalia baked in, with Kali and Arch/AUR distrobox containers provisioned on first boot.
 base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia
 image-version: stable
 
@@ -11,11 +11,9 @@ modules:
     repos:
       copr:
         - avengemedia/danklinux
-        - avengemedia/dms
     install:
       packages:
         - niri
-        - dms
         - matugen
         - quickshell
         - qt5ct
