@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 version: 1
 name: k01-os
-description: Bazzite (GNOME, nvidia) + niri/Noctalia baked in, with Kali and Arch/AUR distrobox containers provisioned on first boot.
+description: Bazzite (GNOME, nvidia) + Hyprland/Ambxst baked in (niri kept as fallback session), with Kali and Arch/AUR distrobox containers provisioned on first boot.
 base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia
 image-version: stable
 
@@ -11,8 +11,11 @@ modules:
     repos:
       copr:
         - avengemedia/danklinux
+        - ashbuk/Hyprland-Fedora
     install:
       packages:
+        # niri kept installed as a fallback session (session picker on GDM)
+        # until Hyprland+Ambxst has survived a few reboots.
         - niri
         - matugen
         - quickshell
@@ -27,6 +30,15 @@ modules:
         - tomlplusplus
         # Wallpaper setter backing the HyprQuickPaper-style picker.
         - swaybg
+        # Hyprland session (new default). Ambxst (shell) and hyprglaze
+        # (shader wallpaper daemon) are installed by the user outside the
+        # image via their own installers, same pattern as Noctalia above.
+        - hyprland
+        - hyprlock
+        - hypridle
+        - xdg-desktop-portal-hyprland
+        # Toolchain hyprglaze needs to build itself from source ($HOME).
+        - zig
 
   - type: files
     files:
