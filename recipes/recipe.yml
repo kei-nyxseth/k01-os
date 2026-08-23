@@ -106,6 +106,9 @@ modules:
         - libglvnd-devel
         - stb-devel
         - pulseaudio-libs-devel
+        # --- hyprexpo plugin build deps (via hyprpm, ships with hyprland) ---
+        - cmake
+        - ninja-build
 
   - type: files
     files:
