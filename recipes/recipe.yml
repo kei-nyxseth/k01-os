@@ -95,6 +95,17 @@ modules:
         - mpvpaper
         - adw-gtk3-theme
         - unzip
+        # --- hyprglaze build deps (github.com/slastra/hyprglaze) ---
+        # Compiled from source in $HOME via "zig build" (zig already above);
+        # these are its system C deps (wayland/GL/audio headers), Fedora
+        # names for the Arch PKGBUILD's wayland/mesa/libglvnd/stb/libpulse.
+        - wayland-devel
+        - wayland-protocols-devel
+        - mesa-libGL-devel
+        - mesa-libEGL-devel
+        - libglvnd-devel
+        - stb-devel
+        - pulseaudio-libs-devel
 
   - type: files
     files:
