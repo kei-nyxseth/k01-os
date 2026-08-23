@@ -12,6 +12,7 @@ modules:
       copr:
         - avengemedia/danklinux
         - ashbuk/Hyprland-Fedora
+        - zirconium/packages
     install:
       packages:
         # niri kept installed as a fallback session (session picker on GDM)
@@ -39,6 +40,61 @@ modules:
         - xdg-desktop-portal-hyprland
         # Toolchain hyprglaze needs to build itself from source ($HOME).
         - zig
+        # --- Ambxst shell deps (github.com/Axenide/Ambxst) ---
+        # Its own installer runs "dnf install" at first-run, which Bazzite's
+        # dnf wrapper hard-blocks on an ostree host (see docs.bazzite.gg) —
+        # so every package its Fedora branch would install is baked here
+        # instead, and the installer is run locally with that step skipped.
+        # (matugen, quickshell already covered above; R-CRAN-phosphoricons
+        # skipped — install_phosphor_fonts() in the script fetches the
+        # actual font directly, no need for the CRAN copr/package.)
+        - tmux
+        - fuzzel
+        - network-manager-applet
+        - blueman
+        - easyeffects
+        - playerctl
+        - qt6-qtbase
+        - qt6-qtdeclarative
+        - qt6-qtwayland
+        - qt6-qtsvg
+        - qt6-qttools
+        - qt6-qtimageformats
+        - qt6-qtmultimedia
+        - qt6-qtshadertools
+        - kf6-syntax-highlighting
+        - kf6-breeze-icons
+        - brightnessctl
+        - ddcutil
+        - grim
+        - slurp
+        - ImageMagick
+        - upower
+        - wl-clipboard
+        - wlsunset
+        - wtype
+        - zbar
+        - pipx
+        - zenity
+        - python3.12
+        - tesseract
+        - tesseract-langpack-eng
+        - tesseract-langpack-spa
+        - tesseract-langpack-jpn
+        - tesseract-langpack-chi_sim
+        - tesseract-langpack-chi_tra
+        - tesseract-langpack-kor
+        - tesseract-langpack-lat
+        - google-roboto-fonts
+        - google-roboto-mono-fonts
+        - dejavu-sans-fonts
+        - liberation-fonts
+        - google-noto-fonts-common
+        - google-noto-cjk-fonts
+        - google-noto-emoji-fonts
+        - mpvpaper
+        - adw-gtk3-theme
+        - unzip
 
   - type: files
     files:
