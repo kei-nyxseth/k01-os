@@ -12,7 +12,10 @@ modules:
       copr:
         - avengemedia/danklinux
         - ashbuk/Hyprland-Fedora
-        - zirconium/packages
+        # zirconium/packages doesn't actually publish mpvpaper (empty repo
+        # as of 2026-08-23) despite being the name Ambxst's installer
+        # expects; caoturkey/Celestia does, with a fedora-44 build.
+        - caoturkey/Celestia
     install:
       packages:
         # niri kept installed as a fallback session (session picker on GDM)
@@ -99,10 +102,14 @@ modules:
         # Compiled from source in $HOME via "zig build" (zig already above);
         # these are its system C deps (wayland/GL/audio headers), Fedora
         # names for the Arch PKGBUILD's wayland/mesa/libglvnd/stb/libpulse.
+        # mesa-libGL-devel/mesa-libEGL-devel deliberately omitted: they
+        # require an exact-version mesa-libGL/mesa-libEGL that this nvidia
+        # base image excludes by design (GL/EGL come from the nvidia driver
+        # stack instead); libglvnd-devel alone already ships the GL/EGL
+        # headers (/usr/include/GL, /usr/include/EGL), which is all a build
+        # needs.
         - wayland-devel
         - wayland-protocols-devel
-        - mesa-libGL-devel
-        - mesa-libEGL-devel
         - libglvnd-devel
         - stb-devel
         - pulseaudio-libs-devel
