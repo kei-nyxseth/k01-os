@@ -7,6 +7,14 @@ base-image: ghcr.io/ublue-os/bazzite-gnome-nvidia
 image-version: stable
 
 modules:
+  # Runs before the dnf module below: it copies in
+  # etc/yum.repos.d/sachesi-hyprland-guiutils.repo, which the dnf module
+  # needs already in place to install hyprland-guiutils from it.
+  - type: files
+    files:
+      - source: system_files
+        destination: /
+
   - type: dnf
     repos:
       copr:
@@ -121,11 +129,15 @@ modules:
         # --- hyprexpo plugin build deps (via hyprpm, ships with hyprland) ---
         - cmake
         - ninja-build
-
-  - type: files
-    files:
-      - source: system_files
-        destination: /
+        # Runtime dep for some Hyprland dialogs (the "consider installing
+        # it" config-error banner); real package name is hyprland-guiutils,
+        # only shipped by sachesi/hyprland (fedora-44 build) among the
+        # coprs available here. Pulled from a hand-rolled, includepkgs-
+        # restricted repo file (see the files module above) instead of an
+        # ordinary "copr:" entry, since that project also builds "hyprland"
+        # and "xdg-desktop-portal-hyprland" and an unrestricted repo would
+        # make dnf's solver free to pick those over ashbuk's builds.
+        - hyprland-guiutils
 
   - type: systemd
     system:

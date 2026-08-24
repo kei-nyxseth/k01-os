@@ -1,0 +1,16 @@
+[copr:copr.fedorainfracloud.org:sachesi:hyprland]
+name=Copr repo for hyprland owned by sachesi
+baseurl=https://download.copr.fedorainfracloud.org/results/sachesi/hyprland/fedora-$releasever-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/sachesi/hyprland/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
+# Restricted to hyprland-guiutils only: this repo also builds "hyprland" and
+# "xdg-desktop-portal-hyprland", which would otherwise collide with the
+# builds we actually want from ashbuk/Hyprland-Fedora further up. includepkgs
+# keeps it from ever being a candidate provider for anything but this one
+# package.
+includepkgs=hyprland-guiutils
