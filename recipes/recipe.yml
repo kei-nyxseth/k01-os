@@ -98,6 +98,11 @@ modules:
         - mpvpaper
         - adw-gtk3-theme
         - unzip
+        # inotify-tools: backs ambxst-hyprland-lua-fix.service (~/.local/bin),
+        # a workaround for a bug in Ambxst's generator that occasionally
+        # writes an invalid general.col.inactive_border, which otherwise
+        # shows as a permanent "config has errors" banner.
+        - inotify-tools
         # --- hyprglaze build deps (github.com/slastra/hyprglaze) ---
         # Compiled from source in $HOME via "zig build" (zig already above);
         # these are its system C deps (wayland/GL/audio headers), Fedora
