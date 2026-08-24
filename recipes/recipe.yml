@@ -57,6 +57,7 @@ modules:
         - blueman
         - easyeffects
         - playerctl
+        - power-profiles-daemon
         - qt6-qtbase
         - qt6-qtdeclarative
         - qt6-qtwayland
